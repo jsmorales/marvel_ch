@@ -61,8 +61,9 @@
 	      url: url,
 	      data: data,
 	      beforeSend: function(){
-	      	console.log("Cargando...")
 	      	$("#div-loading").removeAttr('hidden');
+	      	console.log("Cargando...")
+	      	
 	      	$("#div-loading").show('fast');	      	
 	      }
 	    })

@@ -9,12 +9,9 @@
 
 		loadAllPersonajes: function(){
 
-			//ajax_req_exe();
-			//console.log(this.url_todo)
-			//console.log(data)
 			var res;
 
-			data.limit = 10;
+			data.limit = 100;
 
 			var all_personajes = ajax_req_exe(this.url_todo, data);
 
@@ -23,6 +20,22 @@
 				res = data.data.results;
 			});
 			//this.loadAllPersonajes()
+			return res;
+		},
+		loadPersonaje: function(id_char){
+			//1009368
+
+			var res;			
+
+			//this.resetDiv();
+
+			var search = ajax_req_exe(this.url_todo+"/"+id_char, data);
+
+			search.done(function(data){
+				//console.log(data.data.results);
+				res = data.data.results;
+			});
+
 			return res;
 		},
 		searchName: function(term){
@@ -48,22 +61,30 @@
 			
 			this.resetDiv();
 
-			var itr = $.each(data, function(index, val) {
-				console.log(val)
-				self.div_personajes.attr('hidden', 'true').append(self.createDivMainPersonaje(val));
-				//div_personajes
-			});
+			console.log(data.length)
 
-			//console.log(this.createDivMainPersonaje())
-			$.when(itr).then(function(){
+			if (data.length > 0) {
 
-			});
+				var itr = $.each(data, function(index, val) {
+					console.log(val)
+					self.div_personajes.attr('hidden', 'true').append(self.createDivMainPersonaje(val));
+					//div_personajes
+				});
+
+				//console.log(this.createDivMainPersonaje())
+				$.when(itr).then(function(){
+
+				});
+
+			} else {
+				self.div_personajes.append('<h3 class="lbl-msg-marvel">No hay resultados.</h3>')
+			}
 			
 		},
 		createDivMainPersonaje: function(data){
 			return this.createDivMd6(
 						this.createPanelMain(
-							this.createPanelBody(data.thumbnail.path+'.'+data.thumbnail.extension,data.name,data.description)
+							this.createPanelBody(data.thumbnail.path+'.'+data.thumbnail.extension,data.name,data.description, data.id)
 						)
 					);
 		},
@@ -73,12 +94,13 @@
 		createDivMd6: function(item){
 			return '<div class="col-md-6">'+item+'</div>';
 		},
-		createPanelBody: function(src_img, name, desc){
+		createPanelBody: function(src_img, name, desc, id){
 			return ('<div class="panel-body">'+
 				this.createDivMd6(this.createIconPersonaje(src_img)))+
 			    this.createDivMd6(
 			    	this.createNamePersonaje(name)+
-			    	this.createDecPersonaje(desc)
+			    	this.createDecPersonaje(desc)+
+			    	this.createBtnVer(id)
 			    )+'</div>';
 		},
 		createIconPersonaje: function(src_img){
@@ -88,8 +110,13 @@
 			console.log(name.length)
 			return '<h3 title="'+name+'"" class="name-personaje-marvel text-right">'+this.limitStr(name, 20)+'</h3>';
 		},
-		createDecPersonaje: function(desc){			
-			return '<p>'+this.limitStr(desc, 200)+'</p>';
+		createDecPersonaje: function(desc){
+			desc = desc == "" ? "Not Found." : desc;
+
+			return '<p>'+this.limitStr(desc, 100)+'</p>';
+		},
+		createBtnVer: function(id_c){
+			return '<button type="button" class="btn btn-info btn-ver-personaje" data-id-personaje="'+id_c+'">Ver Personaje</button>';
 		},
 		limitStr: function(str, max){
 			return str = str.length > max ? str.substring(0, max)+"..." : str;

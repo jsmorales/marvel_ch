@@ -74,6 +74,7 @@ html{
     border-bottom: solid 1px #ed1d24;
     padding: 5px;
     border-right: solid 1px #ed1d24;
+    cursor: pointer;
 }
 
 .icon-personaje-marvel{
@@ -90,4 +91,29 @@ html{
 .lbl-search-term-marvel{
     color: white;
     margin-top: 25px;
+}
+
+.btn-ver-personaje{
+    border-radius: 0;
+    background-color: #ed1b24;
+    border: 0;
+}
+
+.btn-ver-personaje:hover {
+	background-color: #9c1318;
+}
+
+.btn-ver-personaje:active {
+	background-color: black!important;
+}
+
+.btn-ver-personaje:focus {
+	background-color: #9c1318;
+}
+
+.lbl-msg-marvel{
+	color: white;
+    border-bottom: 1px solid red;
+    width: 25%;
+    padding: 15px;
 }

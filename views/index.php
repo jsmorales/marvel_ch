@@ -65,7 +65,7 @@
 	
 	<!--contenido principal -->
 	<div class="col-md-12">
-		<div id="div-loading" class="cold-md-12 text-center gif-load" hidden="true">
+		<div id="div-loading" class="cold-md-12 text-center gif-load">
 			<img class="img-rounded load-rounded" src="../export/loading_prime.gif">
 		</div>
 	</div>
@@ -156,10 +156,12 @@
 						<p>ñaskdjf añsldkjfas d ufihasldkjhfals dkfhalksdjfglashdgflkajsdhflkajsdhf
 						sdljfaskjdfhlkajsdhf laksjdfh laksjdfh lakjsdfh lkajsdhf lasjkdfh laskjdfh las
 						kalsjdfh lkajsdhfl kajsdfhlkajsd hflkjasdhf lkajsdhflkjsadh lsdakjhf laskjd fh
-						akjsdhf lkjasdh flkjashdf lkjasdhfl kajsdhflkajsdhfl kjasdhfl jkasdf.
+						akjsdhf.
 						</p>
+
+						<button type="button" class="btn btn-info btn-ver-personaje">Ver Personaje</button>
 					</div>			
-					
+
 				</div>
 			</div>
 
