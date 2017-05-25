@@ -1,7 +1,7 @@
 .logo-marvel{
 	width: 50%;
     padding: 0;
-   	margin-left: 10%;
+   	margin-left: 25%;
     margin-top: -8px;
 }
 
@@ -15,8 +15,57 @@
 }
 
 .input-search-marvel{
-    width: 341%;
+    width: 100%!important;
     height: 51px;
     margin-top: 5px;
     border-radius: 0;
+}
+
+.btn-search-marvel{
+    border-radius: 0;
+    width: 60px;
+    height: 51px;
+    display: inline-block;
+    margin-top: 5px;
+    margin-left: -5px;
+    background-color: #ed1b24;
+    border-color: #ed1b24;
+    border: 2px solid white;
+}
+
+.span-glyph-icon-marvel{
+    color: white;
+    font-size: 20px;
+}
+
+.frm-group-marvel{
+    width: 50%;
+}
+
+.contenedor-marvel{
+    margin-left: 5%;
+}
+
+.subtitle-marvel{
+    display: inline-block;
+}
+
+.div-personajes{
+    margin-top: 50px;
+}
+
+.panel-personaje-marvel{
+    border-radius: 0;
+}
+
+.name-personaje-marvel{
+    font-weight: bold;
+    margin-top: -40px;
+    margin-right: 5%;
+    font-size: 35px;
+}
+
+.icon-personaje-marvel{
+    /*margin-top: -30px;
+    margin-left: -40px;*/
 }

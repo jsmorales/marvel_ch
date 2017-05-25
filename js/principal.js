@@ -24,4 +24,8 @@ $(function(){
     .always(function() {
       console.log("complete");
     });*/
+  var prsnjs = new personajes();
+
+  prsnjs.createAllPersonajes();
+
 })

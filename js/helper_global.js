@@ -54,4 +54,24 @@
 		"hash": md5(ts+auth.private_key+auth.public_key)
 	}
 
+	self.ajax_req_exe = function(url, data){
+
+		return $.ajax({
+		  async: false,
+	      url: url,
+	      data: data,
+	    })
+	    .done(function(data) {	          
+	      //---------------------
+	      //console.log(data)	                  
+	    })
+	    .fail(function(data) {
+	      console.log("Ocurrió un error en la petición.");	          
+	      //alert(data[0].mensaje);          
+	    })
+	    .always(function() {
+	      console.log("complete");
+	    });
+	}
+
 })();
