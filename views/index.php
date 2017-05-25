@@ -28,7 +28,7 @@
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			
-			<a class="navbar-brand" href="#">
+			<a class="navbar-brand" href="index.php">
 				<img class="logo-marvel" src="../export/marvel_logo.png">
 			</a>
 		</div>
@@ -39,9 +39,9 @@
 
 			<form class="navbar-form" role="search">
 				<div class="form-group frm-group-marvel">
-					<input type="text" class="form-control input-search-marvel" placeholder="Buscar Personaje">
+					<input id="search_characther" type="text" class="form-control input-search-marvel" placeholder="Buscar Personaje">
 				</div>
-				<button type="submit" class="btn btn-default btn-search-marvel"><span class="glyphicon glyphicon-search span-glyph-icon-marvel"></span></button>
+				<button id="btn_search_characther" type="submit" class="btn btn-default btn-search-marvel"><span class="glyphicon glyphicon-search span-glyph-icon-marvel"></span></button>
 			</form>
 
 		</div><!-- /.navbar-collapse -->
@@ -56,17 +56,25 @@
 	<div class="col-md-6">
 		<img src="../export/icons/characters.png" alt=""><h2 class="subtitle-marvel">Personajes</h2>		
 	</div>
-	<div class="col-md-6">
-	
+	<div id="div_lbl_search_term" class="col-md-6" hidden="true">
+		<label class="lbl-search-term-marvel" id="lbl_search_term">Buscando por: </label>
 	</div>
 	<!--encabezado contenido -->
+
+	
 	
 	<!--contenido principal -->
-	<div id="div_personajes" class="col-md-12 div-personajes">
-		<!--PERSONAJES -->
+	<div class="col-md-12">
+		<div id="div-loading" class="cold-md-12 text-center gif-load" hidden="true">
+			<img class="img-rounded load-rounded" src="../export/loading_prime.gif">
+		</div>
+	</div>
+	<div id="div_personajes" class="col-md-12 div-personajes">		
+		<!--PERSONAJES 
 		<div class="col-md-6">
 
 			<div class="panel panel-default panel-personaje-marvel">
+
 				<div class="panel-body">
 
 					<div class="col-md-6">
@@ -83,6 +91,7 @@
 					</div>			
 					
 				</div>
+
 			</div>
 
 		</div>
@@ -154,7 +163,7 @@
 				</div>
 			</div>
 
-		</div>
+		</div>-->
 		<!--PERSONAJES -->
 	</div>
 	<!--contenido principal -->

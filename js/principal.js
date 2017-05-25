@@ -1,31 +1,32 @@
 $(function(){
 
-	//console.log("hola marvel")
-
-	/**/
-	//ts+auth.pivate_key+auth.public_key
-
 	console.log(data)
+  //------------------------------------------------------------------------------------
+  self.prsnjs = new personajes($("#div_personajes"));
+  //------------------------------------------------------------------------------------
 
-	/*
-	$.ajax({
-	  async: false,
-      url: "https://gateway.marvel.com/v1/public/characters",
-      data: data,
-    })
-    .done(function(data) {	          
-      //---------------------
-      console.log(data)	                  
-    })
-    .fail(function(data) {
-      console.log(data);	          
-      //alert(data[0].mensaje);          
-    })
-    .always(function() {
-      console.log("complete");
-    });*/
-  var prsnjs = new personajes();
+  prsnjs.createPersonajes(prsnjs.loadAllPersonajes());
 
-  prsnjs.createAllPersonajes();
+  //------------------------------------------------------------------------------------
+  $("#btn_search_characther").click(function(event) {
+
+    $("#div_lbl_search_term").removeAttr('hidden');
+
+    var term = $("#search_characther").val();
+
+    $("#lbl_search_term").html("").append("Buscando por: '"+term+"'");
+    $("#search_characther").val("");
+
+    //prsnjs.searchName()
+
+    //prsnjs.loadAllPersonajes()
+
+    var data_action = term != "" ? prsnjs.searchName(term) : prsnjs.loadAllPersonajes();
+
+    prsnjs.createPersonajes(data_action);
+
+    return false;
+  });
+  //------------------------------------------------------------------------------------
 
 })

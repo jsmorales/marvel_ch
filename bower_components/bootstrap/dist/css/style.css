@@ -1,3 +1,6 @@
+html{
+	background-color: black;
+}
 .logo-marvel{
 	width: 50%;
     padding: 0;
@@ -48,6 +51,7 @@
 
 .subtitle-marvel{
     display: inline-block;
+    color: white;
 }
 
 .div-personajes{
@@ -60,12 +64,30 @@
 
 .name-personaje-marvel{
     font-weight: bold;
-    margin-top: -40px;
-    margin-right: 5%;
-    font-size: 35px;
+    margin-top: -5px;
+    /* margin-right: 5%; */
+    font-size: 22px;
+    border-color: white;
+    /* border: solid white; */
+    /* background-color: black; */
+    /* color: white; */
+    border-bottom: solid 1px #ed1d24;
+    padding: 5px;
+    border-right: solid 1px #ed1d24;
 }
 
 .icon-personaje-marvel{
     /*margin-top: -30px;
     margin-left: -40px;*/
+}
+
+.load-rounded{
+	height: 300px;
+    border-radius: 100px;
+    margin-top: 60px;
+}
+
+.lbl-search-term-marvel{
+    color: white;
+    margin-top: 25px;
 }

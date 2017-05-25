@@ -60,8 +60,19 @@
 		  async: false,
 	      url: url,
 	      data: data,
+	      beforeSend: function(){
+	      	console.log("Cargando...")
+	      	$("#div-loading").removeAttr('hidden');
+	      	$("#div-loading").show('fast');	      	
+	      }
 	    })
-	    .done(function(data) {	          
+	    .done(function(data) {
+
+	    	setTimeout(function(){
+	    		$("#div-loading").hide('fast');
+	    		$("#div_personajes").removeAttr('hidden');
+	    	},3000)
+	       	          
 	      //---------------------
 	      //console.log(data)	                  
 	    })
