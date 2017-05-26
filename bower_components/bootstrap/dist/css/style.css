@@ -130,10 +130,32 @@ html{
     border-bottom: 1px solid red;
 }
 
+.title-modal-marvel{
+    font-size: 25px;
+}
+
 .btn-close-modal-marvel{
     color: red;
+    opacity: 1;
+    font-size: 30px;
+}
+
+.btn-close-modal-marvel:hover{
+    color: #fff;
+    opacity: 1;    
 }
 
 .ftr-modal-marvel{
     border-top: 0;
+}
+
+.link-comic-related{
+    display: block;
+    color: white;
+    font-size: 20px;
+}
+
+.comics-related-title{
+    border-bottom: 1px solid red;
+    padding: 15px;
 }

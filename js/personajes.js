@@ -102,6 +102,9 @@
 		createDivMd6: function(item){
 			return '<div class="col-md-6">'+item+'</div>';
 		},
+		createDivMd12: function(item){
+			return '<div class="col-md-12">'+item+'</div>';
+		},
 		createDivRow: function(cont){
 			return '<div class="row">'+cont+'</div>';
 		},
@@ -146,6 +149,33 @@
 					)
 				)
 			);
+			$(".modal-footer").html(
+				this.createDivRow(
+					this.createTitleComics()+
+					this.createDivMd12(
+						this.getLinksComicRelated(data[0].comics.items)
+					)
+				)
+			);
+		},
+		createTitleComics: function(){
+			return '<h3 class="text-left comics-related-title">Comics Relacionados</h3>';
+		},
+		createLinkComic: function(name){
+			return '<a href="" class="link-comic-related text-left"><span class="glyphicon glyphicon-book"></span> '+name+'</a> ';
+		},
+		getLinksComicRelated: function(data){
+			//data[0].comics.items
+			var res = "";
+			var self = this;
+
+			$.each(data, function(index, val) {
+				console.log(val);
+
+				res += self.createLinkComic(val.name);
+			});
+
+			return res;
 		}
 	}
 
