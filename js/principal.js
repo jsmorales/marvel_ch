@@ -3,6 +3,7 @@ $(function(){
     //console.log(data)
     //------------------------------------------------------------------------------------
     self.prsnjs = new personajes($("#div_personajes"));
+    
     //------------------------------------------------------------------------------------
     //function inicial
     $("#div-loading").hide();
@@ -42,5 +43,7 @@ $(function(){
         prsnjs.renderModalPersonajes(prsnjs.loadPersonaje($(this).data('id-personaje')));
     });
     //------------------------------------------------------------------------------------
+
+    
 
 })

@@ -1,5 +1,7 @@
 (function(){
 
+	self.cmcs = new comics();
+
 	self.personajes= function(div_personajes){
 		this.div_personajes = div_personajes;
 		this.url_todo = "https://gateway.marvel.com/v1/public/characters";
@@ -157,12 +159,20 @@
 					)
 				)
 			);
+
+			//------------------------------------------------------------------------------------
+		    $(".link-comic-related").click(function(event) {
+		        console.log("Click al comic!!")
+		        console.log(cmcs.renderModalComic(cmcs.loadComic($(this).data('url-idc'))));
+		        return false;
+		    });
+		    //------------------------------------------------------------------------------------
 		},
 		createTitleComics: function(){
 			return '<h3 class="text-left comics-related-title">Comics Relacionados</h3>';
 		},
-		createLinkComic: function(name){
-			return '<a href="" class="link-comic-related text-left"><span class="glyphicon glyphicon-book"></span> '+name+'</a> ';
+		createLinkComic: function(name, url){
+			return '<a class="link-comic-related text-left" data-url-idc="'+url+'"><span class="glyphicon glyphicon-book"></span> '+name+'</a> ';
 		},
 		getLinksComicRelated: function(data){
 			//data[0].comics.items
@@ -172,8 +182,8 @@
 			$.each(data, function(index, val) {
 				console.log(val);
 
-				res += self.createLinkComic(val.name);
-			});
+				res += self.createLinkComic(val.name, val.resourceURI);
+			});		
 
 			return res;
 		}

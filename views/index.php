@@ -13,7 +13,8 @@
 		$scripts->standarCss();
 
 		$arr=[
-			"helper_global.js",
+			"helper_global.js",			
+			"comics.js",
 			"personajes.js",
 			"principal.js"
 		];

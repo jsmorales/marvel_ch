@@ -79,7 +79,7 @@
 	    	setTimeout(function(){
 	    		$("#div-loading").hide('fast');
 	    		$("#div_personajes").removeAttr('hidden');
-	    	},3000)
+	    	},2000)
 	       	          
 	      //---------------------
 	      //console.log(data)	                  

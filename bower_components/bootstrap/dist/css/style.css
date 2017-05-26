@@ -153,6 +153,7 @@ html{
     display: block;
     color: white;
     font-size: 20px;
+    cursor: pointer;
 }
 
 .comics-related-title{
