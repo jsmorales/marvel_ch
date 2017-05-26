@@ -1,6 +1,6 @@
 $(function(){
 
-    console.log(data)
+    //console.log(data)
     //------------------------------------------------------------------------------------
     self.prsnjs = new personajes($("#div_personajes"));
     //------------------------------------------------------------------------------------
@@ -12,23 +12,34 @@ $(function(){
     //------------------------------------------------------------------------------------
     $("#btn_search_characther").click(function(event) {
 
-    $("#div_lbl_search_term").removeAttr('hidden');
+        $("#div_lbl_search_term").removeAttr('hidden');
 
         self.term = $("#search_characther").val();
 
-        $("#lbl_search_term").html("").append("Buscando: '"+term+"'");
-        $("#search_characther").val("");
+        if(term != ""){
+            $("#lbl_search_term").html("").append("Buscando: '"+term+"'");
+            $("#search_characther").val("");
+            prsnjs.createPersonajes(prsnjs.searchName(term));
+        }else{
+            $("#lbl_search_term").html("")
+            prsnjs.createPersonajes(prsnjs.loadAllPersonajes());
+        }
 
-        //prsnjs.searchName()
-
-        //prsnjs.loadAllPersonajes()
-
-        var data_action = term != "" ? prsnjs.searchName(term) : prsnjs.loadAllPersonajes();
-        //console.log(term.typeof())
-        console.log(data_action)
-        prsnjs.createPersonajes(data_action);
+        //------------------------------------------------------------------------------------
+        $(".btn-ver-personaje").click(function(event) {
+            //console.log(prsnjs.loadPersonaje($(this).data('id-personaje')));
+            prsnjs.renderModalPersonajes(prsnjs.loadPersonaje($(this).data('id-personaje')));
+        });
+        //------------------------------------------------------------------------------------        
 
         return false;
+    });
+    //------------------------------------------------------------------------------------
+
+    //------------------------------------------------------------------------------------
+    $(".btn-ver-personaje").click(function(event) {
+        //console.log(prsnjs.loadPersonaje($(this).data('id-personaje')));
+        prsnjs.renderModalPersonajes(prsnjs.loadPersonaje($(this).data('id-personaje')));
     });
     //------------------------------------------------------------------------------------
 

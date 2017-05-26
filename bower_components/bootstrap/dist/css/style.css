@@ -15,6 +15,7 @@ html{
     margin-top: -1px;
     border-radius: 0px;
     border-color: black;
+    border-bottom: 1px solid red;
 }
 
 .input-search-marvel{
@@ -116,4 +117,23 @@ html{
     border-bottom: 1px solid red;
     width: 25%;
     padding: 15px;
+}
+
+.modal-cont-marvel{
+    border-radius: 0;
+    padding: 20px;
+    background-color: black;
+    color: white;
+}
+
+.header-modal-marvel{
+    border-bottom: 1px solid red;
+}
+
+.btn-close-modal-marvel{
+    color: red;
+}
+
+.ftr-modal-marvel{
+    border-top: 0;
 }

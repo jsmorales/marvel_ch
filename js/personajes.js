@@ -11,9 +11,15 @@
 
 			var res;
 
-			data.limit = 100;
+			var dataAll = getData();
 
-			var all_personajes = ajax_req_exe(this.url_todo, data);
+			dataAll.limit = 100;
+			//--------------------------
+			//data.limit = 100;
+			//delete data.nameStartsWith;
+			//--------------------------
+
+			var all_personajes = ajax_req_exe(this.url_todo, dataAll);
 
 			all_personajes.done(function(data){
 				//console.log(data.data.results);
@@ -27,9 +33,10 @@
 
 			var res;			
 
+			var dataCharacter = getData();
 			//this.resetDiv();
 
-			var search = ajax_req_exe(this.url_todo+"/"+id_char, data);
+			var search = ajax_req_exe(this.url_todo+"/"+id_char, dataCharacter);
 
 			search.done(function(data){
 				//console.log(data.data.results);
@@ -41,12 +48,13 @@
 		searchName: function(term){
 			var res;
 
-			data.limit = 10;
-			data.nameStartsWith = term;
+			var dataCharName = getData();
+			dataCharName.limit = 10;
+			dataCharName.nameStartsWith = term;
 
 			this.resetDiv();
 
-			var search = ajax_req_exe(this.url_todo, data);
+			var search = ajax_req_exe(this.url_todo, dataCharName);
 
 			search.done(function(data){
 				//console.log(data.data.results);
@@ -94,12 +102,15 @@
 		createDivMd6: function(item){
 			return '<div class="col-md-6">'+item+'</div>';
 		},
+		createDivRow: function(cont){
+			return '<div class="row">'+cont+'</div>';
+		},
 		createPanelBody: function(src_img, name, desc, id){
 			return ('<div class="panel-body">'+
 				this.createDivMd6(this.createIconPersonaje(src_img)))+
 			    this.createDivMd6(
 			    	this.createNamePersonaje(name)+
-			    	this.createDecPersonaje(desc)+
+			    	this.createDecPersonaje(desc, 100)+
 			    	this.createBtnVer(id)
 			    )+'</div>';
 		},
@@ -110,19 +121,31 @@
 			console.log(name.length)
 			return '<h3 title="'+name+'"" class="name-personaje-marvel text-right">'+this.limitStr(name, 20)+'</h3>';
 		},
-		createDecPersonaje: function(desc){
+		createDecPersonaje: function(desc, limit){
 			desc = desc == "" ? "Not Found." : desc;
 
-			return '<p>'+this.limitStr(desc, 100)+'</p>';
+			return '<p>'+this.limitStr(desc, limit)+'</p>';
 		},
 		createBtnVer: function(id_c){
-			return '<button type="button" class="btn btn-info btn-ver-personaje" data-id-personaje="'+id_c+'">Ver Personaje</button>';
+			return '<button type="button" class="btn btn-info btn-ver-personaje" data-id-personaje="'+id_c+'" data-toggle="modal" data-target="#modal_personajes" >Ver Personaje</button>';
 		},
 		limitStr: function(str, max){
 			return str = str.length > max ? str.substring(0, max)+"..." : str;
 		},
 		resetDiv: function(){
 			this.div_personajes.html("");
+		},
+		renderModalPersonajes: function(data){
+			console.log(data[0])
+			$(".modal-title").html(data[0].name);
+			$(".modal-body").html(
+				this.createDivRow(
+					this.createDivMd6(this.createIconPersonaje(data[0].thumbnail.path+"."+data[0].thumbnail.extension))+
+				    this.createDivMd6(		
+				    	this.createDecPersonaje(data[0].description, 2000)			    
+					)
+				)
+			);
 		}
 	}
 

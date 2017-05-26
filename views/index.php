@@ -22,20 +22,20 @@
 	 ?>
 </head>
 <body>
-
+<?php 
+	include('_modal_personaje.php');
+ ?>
 <nav class="navbar navbar-default barra-nav-marvel" role="navigation">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
-		<div class="navbar-header">
-			
+		<div class="navbar-header">			
 			<a class="navbar-brand" href="index.php">
 				<img class="logo-marvel" src="../export/marvel_logo.png">
 			</a>
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse navbar-ex1-collapse">
-			
+		<div class="collapse navbar-collapse navbar-ex1-collapse">		
 
 			<form class="navbar-form" role="search">
 				<div class="form-group frm-group-marvel">
@@ -140,7 +140,7 @@
 				</div>
 			</div>
 
-		</div>
+		</div>-->
 
 		<div class="col-md-6">
 
@@ -159,13 +159,13 @@
 						akjsdhf.
 						</p>
 
-						<button type="button" class="btn btn-info btn-ver-personaje">Ver Personaje</button>
+						<button type="button" class="btn btn-info btn-ver-personaje" data-toggle="modal" data-target="#modal_personajes">Ver Personaje</button>
 					</div>			
 
 				</div>
 			</div>
 
-		</div>-->
+		</div>
 		<!--PERSONAJES -->
 	</div>
 	<!--contenido principal -->

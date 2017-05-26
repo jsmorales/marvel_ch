@@ -48,10 +48,17 @@
 	    return res;
 	}
 
-	self.data = {
-		"apikey": auth.public_key,
-		"ts": ts,
-		"hash": md5(ts+auth.private_key+auth.public_key)
+	
+
+	self.getData = function(){
+
+		var data = {};
+
+		data.apikey = auth.public_key;
+		data.ts = ts;
+		data.hash = md5(ts+auth.private_key+auth.public_key);
+
+		return data;
 	}
 
 	self.ajax_req_exe = function(url, data){
