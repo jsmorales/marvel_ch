@@ -58,6 +58,7 @@ html{
 .div-personajes{
     margin-top: 50px;
     border-right: 1px solid red;
+    margin-left: -5%;
 }
 
 .panel-personaje-marvel{
