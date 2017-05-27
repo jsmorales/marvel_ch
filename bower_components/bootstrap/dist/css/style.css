@@ -57,6 +57,7 @@ html{
 
 .div-personajes{
     margin-top: 50px;
+    border-right: 1px solid red;
 }
 
 .panel-personaje-marvel{
@@ -177,4 +178,26 @@ html{
 
 .div-12-favoritos{
     margin-top: 15px;
+}
+
+.title-fav-comic{
+    color: white;
+    border-bottom: 1px solid red;
+    padding: -10px;
+    margin-top: 20px;
+}
+
+.div-comics-favs{
+   margin-top: 50px; 
+}
+
+.comic-fav{
+    padding: 10px;
+}
+
+.title-favs-div{
+    text-align: center;
+    color: white;
+    border-bottom: 1px solid red;
+    padding: 10px;
 }

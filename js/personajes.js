@@ -21,7 +21,7 @@
 			//delete data.nameStartsWith;
 			//--------------------------
 
-			var all_personajes = ajax_req_exe(this.url_todo, dataAll);
+			var all_personajes = ajax_req_exe(this.url_todo, dataAll, true);
 
 			all_personajes.done(function(data){
 				//console.log(data.data.results);
@@ -38,7 +38,7 @@
 			var dataCharacter = getData();
 			//this.resetDiv();
 
-			var search = ajax_req_exe(this.url_todo+"/"+id_char, dataCharacter);
+			var search = ajax_req_exe(this.url_todo+"/"+id_char, dataCharacter, false);
 
 			search.done(function(data){
 				//console.log(data.data.results);
@@ -56,7 +56,7 @@
 
 			this.resetDiv();
 
-			var search = ajax_req_exe(this.url_todo, dataCharName);
+			var search = ajax_req_exe(this.url_todo, dataCharName, true);
 
 			search.done(function(data){
 				//console.log(data.data.results);
@@ -115,7 +115,7 @@
 				this.createDivMd6(this.createIconPersonaje(src_img)))+
 			    this.createDivMd6(
 			    	this.createNamePersonaje(name)+
-			    	this.createDecPersonaje(desc, 100)+
+			    	this.createDecPersonaje(desc, 60)+
 			    	this.createBtnVer(id)
 			    )+'</div>';
 		},

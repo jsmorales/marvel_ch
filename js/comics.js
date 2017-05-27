@@ -2,7 +2,7 @@
 
 	self.comics = function(){
 		//this.div_personajes = div_personajes;
-		//this.url_todo = "https://gateway.marvel.com/v1/public/comics";
+		this.url_todo = "https://gateway.marvel.com/v1/public/comics";
 	}
 
 	self.comics.prototype = {
@@ -15,7 +15,7 @@
 			var dataComic = getData();
 			//this.resetDiv();
 
-			var search = ajax_req_exe(url, dataComic);
+			var search = ajax_req_exe(url, dataComic, false);
 
 			search.done(function(data){
 				//console.log(data.data.results);
@@ -42,7 +42,16 @@
 			return '<p>'+this.limitStr(desc, limit)+'</p>';
 		},
 		createBtnFavoritos: function(id_comic){
-			return '<a class="btn-comic-favoritos-default" href="" data-id-comic="'+id_comic+'"><img src="../export/icons/btn-favourites-primary.png" alt=""> Añadir a Favoritos</a>';
+			//si el comic ya es favorito carga el boton con la imagen btn-comic-favoritos-primary
+			//de lo contrario carga el default
+			//crear metodo de verififcacion de favorito
+			var valComic = data_storage.validateComic(id_comic.toString());
+			console.log(id_comic)
+			var iconFav = valComic ? "favourites-default" : "favourites-primary";
+			//var dis = valComic ? " disabled='disabled' " : "";
+			var msg = valComic ? "Quitar comic de favoritos" : "Añadir a Favoritos";
+
+			return '<a class="btn-comic-favoritos-default" href="" data-id-comic="'+id_comic+'"><img src="../export/icons/btn-'+iconFav+'.png" alt=""> '+msg+'</a>';
 		},
 		renderModalComic: function(data){
 			var self = this;
@@ -62,16 +71,67 @@
 			
 			$(".btn-comic-favoritos-default").click(function(event) {
 				
-				console.log($(this).attr('data-id-comic'))
-				self.addComicFavs($(this).attr('data-id-comic'));
+				var valComic = data_storage.validateComic($(this).attr('data-id-comic').toString());
+				console.log(valComic)
+				/**/
+				if (!valComic) {
+					console.log($(this).attr('data-id-comic'))
+					self.addComicFavs($(this).attr('data-id-comic'));
+					self.renderModalComic(self.loadComic(self.url_todo+"/"+$(this).attr('data-id-comic')))
+				} else {
+					//alert("Este comic ya está en tus favoritos!")
+					self.rmComicFavs($(this).attr('data-id-comic'));
+					self.renderModalComic(self.loadComic(self.url_todo+"/"+$(this).attr('data-id-comic')))
+					
+				}
+
+				self.renderFavsComics()
+				
 				return false;
 			});			
+		},
+		renderFavsComics: function(){
+			var self = this;
+			//tomar el array de comics favoritos
+			var comics_favs = data_storage.getLcsObjt().comics;
+			/**/
+			$("#div_comics_favs").html("");
+
+			$.each(comics_favs, function(index, val) {
+				console.log(val)
+
+				//console.log(this.loadComic(this.url_todo+"/"+comics_favs[0]))
+				
+				var comic = self.loadComic(self.url_todo+"/"+val);
+				console.log(comic[0])
+				/**/
+				$("#div_comics_favs").append(
+					self.createContFav(
+						self.createIconComicFav(comic[0].thumbnail.path+"."+comic[0].thumbnail.extension)+
+						self.createTitleFav(comic[0].title)
+					)
+				)
+
+			});
+
+		},
+		createContFav: function(item){
+			return '<div class="comic-fav text-center">'+item+'</div>';
+		},
+		createTitleFav: function(title){
+			return '<p class="title-fav-comic">'+title+'</p>';
+		},
+		createIconComicFav: function(src_img){
+			return '<img src="'+src_img+'" width="140" height="200">';
 		},
 		limitStr: function(str, max){
 			return str = str.length > max ? str.substring(0, max)+"..." : str;
 		},
 		addComicFavs: function(id){
 			data_storage.addComic(id)
+		},
+		rmComicFavs: function(id){
+			data_storage.removeComic(id)
 		}		
 		
 	}

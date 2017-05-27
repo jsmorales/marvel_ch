@@ -61,17 +61,19 @@
 		return data;
 	}
 
-	self.ajax_req_exe = function(url, data){
+	self.ajax_req_exe = function(url, data, animate){
 
 		return $.ajax({
 		  async: false,
 	      url: url,
 	      data: data,
 	      beforeSend: function(){
-	      	$("#div-loading").removeAttr('hidden');
-	      	console.log("Cargando...")
-	      	
-	      	$("#div-loading").show('fast');	      	
+	      	if (animate) {
+	      		$("#div-loading").removeAttr('hidden');
+		      	console.log("Cargando...")
+		      	
+		      	$("#div-loading").show('fast');
+		    }	      		      	
 	      }
 	    })
 	    .done(function(data) {
@@ -95,7 +97,7 @@
 
 
 	self.localComicsFavs = function(){
-
+		this.lclSt = {};
 	}
 	/*
 	var testObject = { 'one': 1, 'two': 2, 'three': 3 };
@@ -115,25 +117,56 @@
 			if (localStorage.comics_favoritos != undefined) {
 			    console.log("ya existe el item comics_favoritos")
 			} else {
-			    localStorage.setItem("comics_favoritos", JSON.stringify({"comics":[]}));
-			    
-			    //localStorage.comics_favoritos = {"comics":[]};
-
+			    localStorage.setItem("comics_favoritos", JSON.stringify({"comics":[]}));		  
 			    console.log("creado el item comics_favoritos")
 			}
 		},
 		addComic: function(item){
 			//localStorage.comics_favoritos.push(item);
-			console.log(localStorage.getItem('comics_favoritos'));
+			//console.log(localStorage.getItem('comics_favoritos'));
 			
-			var lclSt = JSON.parse(localStorage.getItem('comics_favoritos'));
+			
 			//hacer un indexOf(searchElement: any, fromIndex?: int) antes de
 			//ingresarlo al array
-			lclSt.comics.push(item)
+			this.getValsComics()
+			this.setValsComics(item)
 
-			localStorage.setItem("comics_favoritos", JSON.stringify(lclSt));
+			console.log(this.lclSt.comics)
+		},
+		removeComic: function(item){
+			//fruits.splice(2, 2);
 
-			console.log(lclSt.comics)
+			this.getValsComics()
+
+			var pos = this.lclSt.comics.indexOf(item)
+
+			this.lclSt.comics.splice(pos, 1);
+
+			localStorage.setItem("comics_favoritos", JSON.stringify(this.lclSt));
+
+		},
+		validateComic: function(id_comic){
+			
+			this.getValsComics()
+			var validate = this.lclSt.comics.indexOf(id_comic)
+			//console.log(validate)
+			var res = false;
+			res = validate != -1 ? true : false;
+
+			return res;
+		},
+		getValsComics: function(){
+			this.lclSt = JSON.parse(localStorage.getItem('comics_favoritos'));
+		},
+		setValsComics: function(item){
+
+			this.lclSt.comics.push(item)
+
+			localStorage.setItem("comics_favoritos", JSON.stringify(this.lclSt));
+		},
+		getLcsObjt: function(){
+			this.getValsComics()
+			return this.lclSt;
 		}
 	}
 

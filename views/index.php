@@ -70,7 +70,7 @@
 			<img class="img-rounded load-rounded" src="../export/loading_prime.gif">
 		</div>
 	</div>
-	<div id="div_personajes" class="col-md-12 div-personajes">		
+	<div id="div_personajes" class="col-md-10 div-personajes">		
 		<!--PERSONAJES 
 		<div class="col-md-6">
 
@@ -168,6 +168,17 @@
 
 		</div>-->
 		<!--PERSONAJES -->
+	</div>
+
+	
+	<div class="col-md-2 div-comics-favs">
+		<h3 class="title-favs-div">Favoritos</h3>
+		<div id="div_comics_favs" ></div>
+		<!--
+		<div class="comic-fav text-center">
+			<img src="../export/iron_man.jpg" width="100" height="200">
+			<p class="title-fav-comic">Iron Man 1983 #1</p>
+		</div>-->
 	</div>
 	<!--contenido principal -->
 
