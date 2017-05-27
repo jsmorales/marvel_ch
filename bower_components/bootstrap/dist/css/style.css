@@ -160,3 +160,21 @@ html{
     border-bottom: 1px solid red;
     padding: 15px;
 }
+
+.btn-reload-personaje{
+    color: red;
+    font-size: 12px;
+    /*border-bottom: 1px solid white;
+    padding-bottom: 5px;  */
+}
+
+.btn-comic-favoritos-default{
+    color: white;
+    padding-left: 10px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.div-12-favoritos{
+    margin-top: 15px;
+}

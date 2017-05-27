@@ -93,4 +93,49 @@
 	    });
 	}
 
+
+	self.localComicsFavs = function(){
+
+	}
+	/*
+	var testObject = { 'one': 1, 'two': 2, 'three': 3 };
+
+	// Put the object into storage
+	localStorage.setItem('testObject', JSON.stringify(testObject));
+
+	// Retrieve the object from storage
+	var retrievedObject = localStorage.getItem('testObject');
+
+	console.log('retrievedObject: ', JSON.parse(retrievedObject));
+	*/
+	self.localComicsFavs.prototype = {
+
+		setUp: function(){
+
+			if (localStorage.comics_favoritos != undefined) {
+			    console.log("ya existe el item comics_favoritos")
+			} else {
+			    localStorage.setItem("comics_favoritos", JSON.stringify({"comics":[]}));
+			    
+			    //localStorage.comics_favoritos = {"comics":[]};
+
+			    console.log("creado el item comics_favoritos")
+			}
+		},
+		addComic: function(item){
+			//localStorage.comics_favoritos.push(item);
+			console.log(localStorage.getItem('comics_favoritos'));
+			
+			var lclSt = JSON.parse(localStorage.getItem('comics_favoritos'));
+			//hacer un indexOf(searchElement: any, fromIndex?: int) antes de
+			//ingresarlo al array
+			lclSt.comics.push(item)
+
+			localStorage.setItem("comics_favoritos", JSON.stringify(lclSt));
+
+			console.log(lclSt.comics)
+		}
+	}
+
+
 })();

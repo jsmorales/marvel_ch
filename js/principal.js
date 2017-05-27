@@ -43,7 +43,12 @@ $(function(){
         prsnjs.renderModalPersonajes(prsnjs.loadPersonaje($(this).data('id-personaje')));
     });
     //------------------------------------------------------------------------------------
-
     
+    //------------------------------------------------------------------------------------    
+    //localStorage.setItem("comics_favoritos");
+    self.data_storage = new localComicsFavs();
+
+    data_storage.setUp()
+    //------------------------------------------------------------------------------------
 
 })

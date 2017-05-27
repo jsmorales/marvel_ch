@@ -5,10 +5,12 @@
       <div class="modal-header header-modal-marvel">
         <button type="button" class="close btn-close-modal-marvel" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove-circle"></span></button>
         <h4 class="modal-title title-modal-marvel" id="myModalLabel">Modal title</h4>
+        <a href="#" class="btn-reload-personaje"> <span class="glyphicon glyphicon-repeat"></span> Ver Personaje</a>
       </div>
       <div class="modal-body">
         ...
       </div>
+      
       <div class="modal-footer ftr-modal-marvel">
         <div class="row">
           <h3 class="text-left comics-related-title">Comics Related</h3>
@@ -24,6 +26,13 @@
           
         </div>     
       </div>
+
     </div>
   </div>
 </div>
+
+<!-- 
+<div class="ftr-modal-addf-marvel">
+  <a class="btn-comic-favoritos-default" href=""><img src="../export/icons/btn-favourites-primary.png" alt=""> Añadir a Favoritos</a>
+</div>
+-->

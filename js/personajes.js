@@ -141,8 +141,10 @@
 			this.div_personajes.html("");
 		},
 		renderModalPersonajes: function(data){
+			var self = this;
 			console.log(data[0])
 			$(".modal-title").html(data[0].name);
+			$(".btn-reload-personaje").attr('data-id-personaje', data[0].id).attr('title', data[0].name);;
 			$(".modal-body").html(
 				this.createDivRow(
 					this.createDivMd6(this.createIconPersonaje(data[0].thumbnail.path+"."+data[0].thumbnail.extension))+
@@ -165,6 +167,13 @@
 		        console.log("Click al comic!!")
 		        console.log(cmcs.renderModalComic(cmcs.loadComic($(this).data('url-idc'))));
 		        return false;
+		    });
+
+		    $(".btn-reload-personaje").unbind('click');
+
+		    $(".btn-reload-personaje").click(function(event){
+		    	console.log($(this).attr('data-id-personaje'))
+		    	self.renderModalPersonajes(self.loadPersonaje($(this).attr('data-id-personaje')));
 		    });
 		    //------------------------------------------------------------------------------------
 		},
