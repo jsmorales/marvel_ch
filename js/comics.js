@@ -132,6 +132,36 @@
 		},
 		rmComicFavs: function(id){
 			data_storage.removeComic(id)
+		},
+		randomComicsP: function(){
+			
+			var cant_links = $("[class*='link-comic-related']").length;			
+
+			//sacar los 3 links random
+			for (var i = 0; i < 3; i++) {				
+				
+				var index = Math.floor(Math.random() * cant_links);				
+				
+				var comic_rand = this.loadComic($("[class*='link-comic-related']")[index]["dataset"]["urlIdc"]);				
+				
+				var valComic = data_storage.validateComic(comic_rand[0].id.toString());
+				
+				/**/
+				if (!valComic) {
+					//si no existe el comic como favorito
+					this.addComicFavs(comic_rand[0].id.toString());					
+				}else{
+
+
+				}
+
+			}
+
+			//renderiza de nuevo los favoritos desde el localStorage
+			this.renderFavsComics()			
+		},
+		_randomUrlComic: function(){
+			
 		}		
 		
 	}
