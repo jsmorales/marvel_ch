@@ -165,7 +165,7 @@
 			//------------------------------------------------------------------------------------
 		    $(".link-comic-related").click(function(event) {
 		        console.log("Click al comic!!")
-		        console.log(cmcs.renderModalComic(cmcs.loadComic($(this).data('url-idc'))));
+		        cmcs.renderModalComic(cmcs.loadComic($(this).data('url-idc')));
 		        return false;
 		    });
 
