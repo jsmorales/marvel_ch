@@ -137,7 +137,7 @@
 			
 			var cant_links = $("[class*='link-comic-related']").length;			
 
-			//sacar los 3 links random
+			//obtener los 3 links random
 			for (var i = 0; i < 3; i++) {				
 				
 				var index = Math.floor(Math.random() * cant_links);				
@@ -150,19 +150,12 @@
 				if (!valComic) {
 					//si no existe el comic como favorito
 					this.addComicFavs(comic_rand[0].id.toString());					
-				}else{
-
-
 				}
-
 			}
 
 			//renderiza de nuevo los favoritos desde el localStorage
 			this.renderFavsComics()			
-		},
-		_randomUrlComic: function(){
-			
-		}		
+		}	
 		
 	}
 
