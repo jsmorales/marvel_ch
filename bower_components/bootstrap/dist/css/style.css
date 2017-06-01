@@ -189,7 +189,7 @@ html{
 }
 
 .div-comics-favs{
-   margin-top: 50px; 
+   margin-top: 15px; 
 }
 
 .comic-fav{
@@ -201,4 +201,13 @@ html{
     color: white;
     border-bottom: 1px solid red;
     padding: 10px;
+}
+
+.btn-aleatorio-comic{
+    color: red;
+    font-size: 12px;
+    /* text-align: start; */
+    /*display: flex;*/
+    margin-bottom: 15px;
+    font-size: 14px;
 }

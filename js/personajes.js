@@ -169,6 +169,14 @@
 		        return false;
 		    });
 
+		    $(".btn-aleatorio-comic").unbind('click');
+
+		    $(".btn-aleatorio-comic").click(function(event) {
+		        console.log("Añadir 3 aleatoriamente!!!")
+		        cmcs.randomComicsP();
+		        return false;
+		    });
+
 		    $(".btn-reload-personaje").unbind('click');
 
 		    $(".btn-reload-personaje").click(function(event){
@@ -178,7 +186,7 @@
 		    //------------------------------------------------------------------------------------
 		},
 		createTitleComics: function(){
-			return '<h3 class="text-left comics-related-title">Comics Relacionados</h3>';
+			return '<h3 class="text-left comics-related-title">Comics Relacionados</h3> <a href="#" class="btn-aleatorio-comic"><span class="glyphicon glyphicon-random"></span> Añadir 3 Comics Aleatoriamente</a>';
 		},
 		createLinkComic: function(name, url){
 			return '<a class="link-comic-related text-left" data-url-idc="'+url+'"><span class="glyphicon glyphicon-book"></span> '+name+'</a> ';
