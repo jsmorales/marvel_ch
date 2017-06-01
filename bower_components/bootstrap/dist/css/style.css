@@ -1,6 +1,11 @@
 html{
 	background-color: black;
 }
+
+body{
+    background-color: black;
+}
+
 .logo-marvel{
 	width: 50%;
     padding: 0;
